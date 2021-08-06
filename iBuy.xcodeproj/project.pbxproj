@@ -11,8 +11,8 @@
 		816FA0B5A7AA9EFAFFE232FB /* Pods_iBuy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9A0057A39CBED21A351EA4F /* Pods_iBuy.framework */; };
 		B32401C826BA19D800102998 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32401C726BA19D800102998 /* AppDelegate.swift */; };
 		B32401CA26BA19D800102998 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32401C926BA19D800102998 /* SceneDelegate.swift */; };
-		B32401CC26BA19D800102998 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32401CB26BA19D800102998 /* MainViewController.swift */; };
-		B32401CF26BA19D800102998 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B32401CD26BA19D800102998 /* Main.storyboard */; };
+		B32401CC26BA19D800102998 /* SelectContryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32401CB26BA19D800102998 /* SelectContryVC.swift */; };
+		B32401CF26BA19D800102998 /* SelectContry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B32401CD26BA19D800102998 /* SelectContry.storyboard */; };
 		B32401D126BA19DA00102998 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B32401D026BA19DA00102998 /* Assets.xcassets */; };
 		B32401D426BA19DA00102998 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B32401D226BA19DA00102998 /* LaunchScreen.storyboard */; };
 		B32401DF26BA19DA00102998 /* iBuyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32401DE26BA19DA00102998 /* iBuyTests.swift */; };
@@ -20,10 +20,10 @@
 		B324020026BA496E00102998 /* ContryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B32401FF26BA496E00102998 /* ContryCell.xib */; };
 		B35B5FB626BB8FC80067C8DA /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B5FB526BB8FC80067C8DA /* Networking.swift */; };
 		B35B5FB826BB93790067C8DA /* ContryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B5FB726BB93790067C8DA /* ContryModel.swift */; };
-		B35D9AB426BD6CE500E9808B /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B35D9AB326BD6CE500E9808B /* Dashboard.storyboard */; };
-		B35D9AB626BD6CF800E9808B /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35D9AB526BD6CF800E9808B /* DashboardVC.swift */; };
-		B39DDF8626BCBF720083BA05 /* SelectContryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39DDF8526BCBF720083BA05 /* SelectContryVC.swift */; };
-		B39DDF8826BCC0030083BA05 /* SelectContry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DDF8726BCC0030083BA05 /* SelectContry.storyboard */; };
+		B36C566A26BD9EFA00594EED /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36C566926BD9EFA00594EED /* Storage.swift */; };
+		B36C566C26BDA0D100594EED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36C566B26BDA0D100594EED /* Constants.swift */; };
+		B36C566E26BDC4B800594EED /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B36C566D26BDC4B800594EED /* Dashboard.storyboard */; };
+		B36C567026BDC4C500594EED /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36C566F26BDC4C500594EED /* DashboardVC.swift */; };
 		B39DDF8A26BCC21C0083BA05 /* ContryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39DDF8926BCC21C0083BA05 /* ContryCell.swift */; };
 		B3C58B6D26BC33BF00C69168 /* Contrys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C58B6C26BC33BF00C69168 /* Contrys.swift */; };
 		B3C58B6F26BC353400C69168 /* Url.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C58B6E26BC353400C69168 /* Url.swift */; };
@@ -56,8 +56,8 @@
 		B32401C426BA19D800102998 /* iBuy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBuy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B32401C726BA19D800102998 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B32401C926BA19D800102998 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B32401CB26BA19D800102998 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		B32401CE26BA19D800102998 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B32401CB26BA19D800102998 /* SelectContryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectContryVC.swift; sourceTree = "<group>"; };
+		B32401CE26BA19D800102998 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SelectContry.storyboard; sourceTree = "<group>"; };
 		B32401D026BA19DA00102998 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B32401D326BA19DA00102998 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B32401D526BA19DA00102998 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -70,10 +70,10 @@
 		B32401FF26BA496E00102998 /* ContryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContryCell.xib; sourceTree = "<group>"; };
 		B35B5FB526BB8FC80067C8DA /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		B35B5FB726BB93790067C8DA /* ContryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContryModel.swift; sourceTree = "<group>"; };
-		B35D9AB326BD6CE500E9808B /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
-		B35D9AB526BD6CF800E9808B /* DashboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
-		B39DDF8526BCBF720083BA05 /* SelectContryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectContryVC.swift; sourceTree = "<group>"; };
-		B39DDF8726BCC0030083BA05 /* SelectContry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectContry.storyboard; sourceTree = "<group>"; };
+		B36C566926BD9EFA00594EED /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		B36C566B26BDA0D100594EED /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B36C566D26BDC4B800594EED /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
+		B36C566F26BDC4C500594EED /* DashboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
 		B39DDF8926BCC21C0083BA05 /* ContryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContryCell.swift; sourceTree = "<group>"; };
 		B3C58B6C26BC33BF00C69168 /* Contrys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contrys.swift; sourceTree = "<group>"; };
 		B3C58B6E26BC353400C69168 /* Url.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Url.swift; sourceTree = "<group>"; };
@@ -190,10 +190,9 @@
 			isa = PBXGroup;
 			children = (
 				B32401FE26BA492F00102998 /* Cells */,
-				B32401CD26BA19D800102998 /* Main.storyboard */,
+				B32401CD26BA19D800102998 /* SelectContry.storyboard */,
 				B32401D226BA19DA00102998 /* LaunchScreen.storyboard */,
-				B39DDF8726BCC0030083BA05 /* SelectContry.storyboard */,
-				B35D9AB326BD6CE500E9808B /* Dashboard.storyboard */,
+				B36C566D26BDC4B800594EED /* Dashboard.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -211,6 +210,8 @@
 			children = (
 				B35B5FB526BB8FC80067C8DA /* Networking.swift */,
 				B3C58B6E26BC353400C69168 /* Url.swift */,
+				B36C566926BD9EFA00594EED /* Storage.swift */,
+				B36C566B26BDA0D100594EED /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -218,10 +219,9 @@
 		B32401FC26BA453300102998 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B32401CB26BA19D800102998 /* MainViewController.swift */,
-				B39DDF8526BCBF720083BA05 /* SelectContryVC.swift */,
+				B32401CB26BA19D800102998 /* SelectContryVC.swift */,
 				B39DDF8926BCC21C0083BA05 /* ContryCell.swift */,
-				B35D9AB526BD6CF800E9808B /* DashboardVC.swift */,
+				B36C566F26BDC4C500594EED /* DashboardVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -363,11 +363,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B32401D426BA19DA00102998 /* LaunchScreen.storyboard in Resources */,
-				B35D9AB426BD6CE500E9808B /* Dashboard.storyboard in Resources */,
 				B32401D126BA19DA00102998 /* Assets.xcassets in Resources */,
-				B39DDF8826BCC0030083BA05 /* SelectContry.storyboard in Resources */,
 				B324020026BA496E00102998 /* ContryCell.xib in Resources */,
-				B32401CF26BA19D800102998 /* Main.storyboard in Resources */,
+				B32401CF26BA19D800102998 /* SelectContry.storyboard in Resources */,
+				B36C566E26BDC4B800594EED /* Dashboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,15 +495,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				B39DDF8A26BCC21C0083BA05 /* ContryCell.swift in Sources */,
-				B35D9AB626BD6CF800E9808B /* DashboardVC.swift in Sources */,
-				B32401CC26BA19D800102998 /* MainViewController.swift in Sources */,
+				B36C566A26BD9EFA00594EED /* Storage.swift in Sources */,
+				B32401CC26BA19D800102998 /* SelectContryVC.swift in Sources */,
 				B3C58B6D26BC33BF00C69168 /* Contrys.swift in Sources */,
 				B3C58B6F26BC353400C69168 /* Url.swift in Sources */,
+				B36C567026BDC4C500594EED /* DashboardVC.swift in Sources */,
 				B32401C826BA19D800102998 /* AppDelegate.swift in Sources */,
 				B32401CA26BA19D800102998 /* SceneDelegate.swift in Sources */,
 				B35B5FB826BB93790067C8DA /* ContryModel.swift in Sources */,
 				B35B5FB626BB8FC80067C8DA /* Networking.swift in Sources */,
-				B39DDF8626BCBF720083BA05 /* SelectContryVC.swift in Sources */,
+				B36C566C26BDA0D100594EED /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,12 +540,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B32401CD26BA19D800102998 /* Main.storyboard */ = {
+		B32401CD26BA19D800102998 /* SelectContry.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B32401CE26BA19D800102998 /* Base */,
 			);
-			name = Main.storyboard;
+			name = SelectContry.storyboard;
 			sourceTree = "<group>";
 		};
 		B32401D226BA19DA00102998 /* LaunchScreen.storyboard */ = {

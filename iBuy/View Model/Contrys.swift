@@ -17,4 +17,8 @@ struct Contrys {
             }
         }
     }
+    
+    func saveSelectedContry(_ contry: ContryModel) {
+        Storage.shared.setLocalContry(contry)
+    }
 }
