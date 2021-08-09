@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="ContryCell" rowHeight="76" id="aTY-sm-qgM" customClass="ContryCell" customModule="iBuy" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="CountryCell" rowHeight="76" id="aTY-sm-qgM" customClass="CountryCell" customModule="iBuy" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="542" height="76"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aTY-sm-qgM" id="emC-8l-0uW">
@@ -70,10 +70,10 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="checkmarkImageView" destination="P2t-a7-ERo" id="bIq-0L-8xD"/>
-                <outlet property="container" destination="i2L-3Q-sA9" id="VXN-mm-ked"/>
-                <outlet property="contryFlag" destination="VaG-03-1TV" id="tTE-rs-8Gk"/>
-                <outlet property="titleLabel" destination="LPV-du-y6d" id="kwG-tI-JAJ"/>
+                <outlet property="checkmarkImageView" destination="P2t-a7-ERo" id="LfB-b0-fOE"/>
+                <outlet property="container" destination="i2L-3Q-sA9" id="iYC-dx-EX6"/>
+                <outlet property="countryFlag" destination="VaG-03-1TV" id="IFM-71-0gw"/>
+                <outlet property="titleLabel" destination="LPV-du-y6d" id="N8P-c3-WE5"/>
             </connections>
             <point key="canvasLocation" x="902.89855072463774" y="8.7053571428571423"/>
         </tableViewCell>

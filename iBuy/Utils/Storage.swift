@@ -12,20 +12,20 @@ struct Storage {
     static let shared = Storage()
     private init() {}
     
-    func setLocalContry(_ contry: ContryModel) {
+    func setLocalCountry(_ country: CountryModel) {
         do {
-            let data = try JSONEncoder().encode(contry)
-            defaults.set(data, forKey: userContry)
+            let data = try JSONEncoder().encode(country)
+            defaults.set(data, forKey: Constants.LocalStorageKey.userCountry)
             defaults.synchronize()
         } catch {
             print(error)
         }
     }
     
-    func getLocalContry() -> ContryModel? {
-        guard let data = defaults.data(forKey: userContry) else { return nil}
+    func getLocalCountry() -> CountryModel? {
+        guard let data = defaults.data(forKey: Constants.LocalStorageKey.userCountry) else { return nil}
         do {
-            return try JSONDecoder().decode(ContryModel.self, from: data)
+            return try JSONDecoder().decode(CountryModel.self, from: data)
         } catch {
             print(error)
             return nil

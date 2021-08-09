@@ -3,8 +3,10 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,16 +17,99 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lDE-sn-LYL">
+                                <rect key="frame" x="20" y="211" width="374" height="651"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jX2-am-YfR">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="n7f-Wp-plP">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="cCB-J0-Y4a">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pBt-ux-a3a">
+                                <rect key="frame" x="20" y="74" width="374" height="50"/>
+                                <color key="backgroundColor" name="Green"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Vdf-iP-Bed"/>
+                                </constraints>
+                                <color key="tintColor" name="MintGreen"/>
+                                <state key="normal" title="Buscar iBuy" image="magnifyingglass" catalog="system">
+                                    <color key="titleColor" name="MintGreen"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="ZMf-dI-ZGQ" kind="show" id="kdR-en-Yx8"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categorías" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Na4-GW-07d">
+                                <rect key="frame" x="20" y="164" width="103.5" height="27"/>
+                                <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="SoftGray"/>
+                        <constraints>
+                            <constraint firstItem="lDE-sn-LYL" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="0zI-cX-s20"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="lDE-sn-LYL" secondAttribute="trailing" constant="20" id="5b6-gA-dkN"/>
+                            <constraint firstItem="pBt-ux-a3a" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="CJS-SM-6Kr"/>
+                            <constraint firstItem="pBt-ux-a3a" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="30" id="Cb5-Qi-eht"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="pBt-ux-a3a" secondAttribute="trailing" constant="20" id="OF7-or-anH"/>
+                            <constraint firstItem="pBt-ux-a3a" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Vvw-wQ-hMU"/>
+                            <constraint firstItem="Na4-GW-07d" firstAttribute="leading" secondItem="pBt-ux-a3a" secondAttribute="leading" id="bq7-Yl-4E5"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="lDE-sn-LYL" secondAttribute="bottom" id="fmV-Vh-y6L"/>
+                            <constraint firstItem="lDE-sn-LYL" firstAttribute="top" secondItem="Na4-GW-07d" secondAttribute="bottom" constant="20" id="nLR-2p-0Rc"/>
+                            <constraint firstItem="Na4-GW-07d" firstAttribute="top" secondItem="pBt-ux-a3a" secondAttribute="bottom" constant="40" id="wJh-kt-XSM"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="categoriesCollectionView" destination="lDE-sn-LYL" id="tun-20-oLs"/>
+                        <outlet property="searchButton" destination="pBt-ux-a3a" id="zY9-N3-d3l"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="122" y="60"/>
+            <point key="canvasLocation" x="121.73913043478262" y="59.598214285714285"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="FdI-Xd-XvK">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Search" id="ZMf-dI-ZGQ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="z6b-mJ-EYz"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6pG-L4-5sc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="740" y="60"/>
         </scene>
     </scenes>
     <resources>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <namedColor name="Green">
+            <color red="0.4309999942779541" green="0.83099997043609619" blue="0.54500001668930054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MintGreen">
+            <color red="0.92500001192092896" green="0.98000001907348633" blue="0.9570000171661377" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="SoftGray">
+            <color red="0.9570000171661377" green="0.9649999737739563" blue="0.99199998378753662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

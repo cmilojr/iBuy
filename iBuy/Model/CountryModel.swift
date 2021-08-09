@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ContryModel: Codable {
+struct CountryModel: Codable {
     let default_currency_id: String
     let id: String
     let name: String

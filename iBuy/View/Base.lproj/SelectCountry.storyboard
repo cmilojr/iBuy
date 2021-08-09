@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Select ContryVC-->
+        <!--Select CountryVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="SelectContry" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="SelectContryVC" customModule="iBuy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SelectCountry" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="SelectCountryVC" customModule="iBuy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -64,7 +64,7 @@
                     </view>
                     <connections>
                         <outlet property="continueButton" destination="Jfa-Rz-2nf" id="PgH-fF-SYD"/>
-                        <outlet property="contryTable" destination="TRX-tM-3AH" id="eNm-eP-WwW"/>
+                        <outlet property="countryTable" destination="TRX-tM-3AH" id="eNm-eP-WwW"/>
                         <segue destination="REB-cQ-a6h" kind="show" identifier="goToDashboard" id="yBh-Zs-my0"/>
                     </connections>
                 </viewController>
