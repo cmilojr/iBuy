@@ -10,6 +10,8 @@ import UIKit
 class DashboardVC: UIViewController {
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     @IBOutlet weak var searchButton: UIButton!
+    fileprivate var categoriesViewModel = Categories()
+    fileprivate var categories = [CategoryModel]()
     
     fileprivate func setupCollectionView() {
         let nib = UINib(nibName: Constants.CellIdentifier.categoryCell, bundle: nil)
@@ -32,21 +34,32 @@ class DashboardVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.isNavigationBarHidden = true
-                
+        
+        categoriesViewModel.getCategories { categoriesRes, error in
+            if let e = error {
+                print(e)
+            } else if let categories = categoriesRes {
+                self.categories = categories
+                self.categoriesCollectionView.reloadData()
+            }
+        }
         setupCollectionView()
         setupSearchButton()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
     }
 }
 
 extension DashboardVC: UICollectionViewDataSource {
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return categories.count
     }
     
     internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifier.categoryCell, for: indexPath) as! CategoryCell
-        cell.setup()
+        cell.setup(titleCategory: categories[indexPath.row].name)
         return cell
     }
 }

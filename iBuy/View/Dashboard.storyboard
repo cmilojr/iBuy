@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hOK-Yb-cik">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -19,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lDE-sn-LYL">
-                                <rect key="frame" x="20" y="211" width="374" height="651"/>
+                                <rect key="frame" x="20" y="268.5" width="374" height="593.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jX2-am-YfR">
                                     <size key="itemSize" width="128" height="128"/>
@@ -39,14 +40,15 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pBt-ux-a3a">
-                                <rect key="frame" x="20" y="74" width="374" height="50"/>
+                                <rect key="frame" x="20" y="118" width="374" height="50"/>
                                 <color key="backgroundColor" name="Green"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Vdf-iP-Bed"/>
                                 </constraints>
                                 <color key="tintColor" name="MintGreen"/>
-                                <state key="normal" title="Buscar iBuy" image="magnifyingglass" catalog="system">
+                                <state key="normal" title="Buscar en iBuy">
                                     <color key="titleColor" name="MintGreen"/>
+                                    <imageReference key="image" image="magnifyingglass" catalog="system" renderingMode="template"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -58,8 +60,8 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categorías" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Na4-GW-07d">
-                                <rect key="frame" x="20" y="164" width="103.5" height="27"/>
-                                <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="20"/>
+                                <rect key="frame" x="20" y="208" width="155.5" height="40.5"/>
+                                <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -79,6 +81,7 @@
                             <constraint firstItem="Na4-GW-07d" firstAttribute="top" secondItem="pBt-ux-a3a" secondAttribute="bottom" constant="40" id="wJh-kt-XSM"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="4CI-fF-JIP"/>
                     <connections>
                         <outlet property="categoriesCollectionView" destination="lDE-sn-LYL" id="tun-20-oLs"/>
                         <outlet property="searchButton" destination="pBt-ux-a3a" id="zY9-N3-d3l"/>
@@ -86,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="121.73913043478262" y="59.598214285714285"/>
+            <point key="canvasLocation" x="1031.8840579710145" y="59.598214285714285"/>
         </scene>
         <!--Search-->
         <scene sceneID="FdI-Xd-XvK">
@@ -96,7 +99,26 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6pG-L4-5sc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="740" y="60"/>
+            <point key="canvasLocation" x="1650.0000000000002" y="59.598214285714285"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="DYZ-Ku-7JK">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hOK-Yb-cik" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="eSZ-aN-rch">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="Green"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="5sc-at-aNM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mpa-uO-ggy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="121.73913043478262" y="59.598214285714285"/>
         </scene>
     </scenes>
     <resources>

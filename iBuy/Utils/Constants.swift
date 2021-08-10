@@ -10,13 +10,17 @@ import UIKit
 struct Constants {
     struct API {
         static let countriesUrl = "https://api.mercadolibre.com/sites"
-        static let categoriesAvailableUrl = "https://api.mercadolibre.com/sites/MLA/categories"
+        static func CategoriesAvailable() -> String {
+            let country = Storage.shared.getLocalCountry()
+            return "https://api.mercadolibre.com/sites/\(country!.id)/categories"
+        }
         // TODO - Insertar "https://api.mercadolibre.com/sites/\(codigo de mi pais)/categories"
     }
     
     struct CellIdentifier {
         static let categoryCell = "CategoryCell"
         static let countryCell = "CountryCell"
+        static let itemCell = "ItemCell"
     }
     
     struct SBIdentifier {
@@ -31,6 +35,9 @@ struct Constants {
     struct CustomColors {
         static let mintGreen = UIColor(named: "MintGreen")
         static let green = UIColor(named: "Green")
+        static let orange = UIColor(named: "Orange")
+        static let softOrange = UIColor(named: "SoftOrange")
+        static let softGray = UIColor(named: "SoftGray")
     }
 }
 

@@ -12,7 +12,8 @@ class CategoryCell: UICollectionViewCell {
     @IBOutlet weak var titleHeight: NSLayoutConstraint!
     @IBOutlet weak var container: UIView!
     
-    func setup() {
-        titleHeight.constant = container.layer.bounds.height - 20
+    func setup(titleCategory: String) {
+        self.titleHeight.constant = container.layer.bounds.height - 20
+        self.title.text = titleCategory
     }
 }
