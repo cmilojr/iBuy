@@ -51,11 +51,22 @@
                     <navigationItem key="navigationItem" title="Buscar" id="wh2-0r-ajV"/>
                     <connections>
                         <outlet property="itemsContainerView" destination="Yk7-WA-4JD" id="oOw-Bq-9Sc"/>
+                        <segue destination="glp-Ce-opI" kind="show" identifier="goToDetail" id="JhH-VP-m2y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="95.758928571428569"/>
+        </scene>
+        <!--DetailItem-->
+        <scene sceneID="yiX-xE-Tze">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DetailItem" id="glp-Ce-opI" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="c6a-pY-Pbz"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="reK-HY-BGU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1650" y="96"/>
         </scene>
     </scenes>
     <resources>

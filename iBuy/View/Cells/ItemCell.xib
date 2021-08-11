@@ -78,12 +78,20 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NN4-WI-OfV">
+                        <rect key="frame" x="0.0" y="0.0" width="216" height="256"/>
+                        <color key="backgroundColor" red="0.92500001192092896" green="0.98000001907348633" blue="0.9570000171661377" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="NN4-WI-OfV" firstAttribute="top" secondItem="B4x-Ow-CZZ" secondAttribute="top" id="0ca-hu-zvi"/>
                     <constraint firstItem="lDx-JA-V0h" firstAttribute="leading" secondItem="B4x-Ow-CZZ" secondAttribute="leading" id="IfZ-zF-3sE"/>
+                    <constraint firstAttribute="bottom" secondItem="NN4-WI-OfV" secondAttribute="bottom" id="W9z-Dp-yVc"/>
                     <constraint firstAttribute="bottom" secondItem="lDx-JA-V0h" secondAttribute="bottom" id="afE-wW-eSr"/>
+                    <constraint firstAttribute="trailing" secondItem="NN4-WI-OfV" secondAttribute="trailing" id="b1A-Gk-r8P"/>
                     <constraint firstItem="lDx-JA-V0h" firstAttribute="top" secondItem="B4x-Ow-CZZ" secondAttribute="top" id="bm6-bS-c7M"/>
                     <constraint firstAttribute="trailing" secondItem="lDx-JA-V0h" secondAttribute="trailing" id="gAB-2u-imq"/>
+                    <constraint firstItem="NN4-WI-OfV" firstAttribute="leading" secondItem="B4x-Ow-CZZ" secondAttribute="leading" id="mA8-MQ-Gun"/>
                 </constraints>
             </collectionViewCellContentView>
             <size key="customSize" width="216" height="256"/>
@@ -92,6 +100,7 @@
                 <outlet property="productImage" destination="qAE-gz-qfQ" id="vLC-Cf-uha"/>
                 <outlet property="productPrice" destination="Lmv-VJ-dze" id="WZg-Wl-kow"/>
                 <outlet property="productTitle" destination="oMb-1y-yc2" id="INm-0a-40P"/>
+                <outlet property="selectedLayer" destination="NN4-WI-OfV" id="LkT-o0-BjR"/>
                 <outlet property="viewHeight" destination="YVQ-a3-uad" id="FsM-fz-9DT"/>
             </connections>
             <point key="canvasLocation" x="223.18840579710147" y="123.88392857142857"/>

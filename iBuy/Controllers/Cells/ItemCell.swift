@@ -13,13 +13,19 @@ class ItemCell: UICollectionViewCell {
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var viewHeight: NSLayoutConstraint!
     @IBOutlet weak var container: UIView!
+    @IBOutlet weak var selectedLayer: UIView!
     
-    func setup(productTitle: String, productPrice: Double, productImageUrl: String) {
+    func setup(productTitle: String, productPrice: Int, productImageUrl: String) {
         self.viewHeight.constant = self.layer.bounds.height / 3
         self.productTitle.text = productTitle
-        self.productPrice.text = "$ \(String(productPrice))"
-        print(productImageUrl)
+        self.productPrice.text = "$ \(productPrice.formattedWithSeparator)"
         self.productImage.download(from: productImageUrl)
+    }
+    
+    override var isSelected: Bool {
+        didSet {
+            self.selectedLayer.isHidden = !isSelected
+        }
     }
 }
 

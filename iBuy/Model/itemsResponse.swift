@@ -14,7 +14,7 @@ struct itemsResponse: Decodable {
 struct itemResponse: Decodable {
     let id: String?
     let title: String?
-    let price: Double?
+    let price: Int?
     let currency_id: String?
     let available_quantity: Int?
     let condition: String?

@@ -7,9 +7,28 @@
 
 import UIKit
 
-class SearchVC: UIViewController, UISearchControllerDelegate {
+class SearchVC: UIViewController {
     @IBOutlet weak var itemsContainerView: UICollectionView!
     var itemsList: itemsResponse?
+    private let searchVM = SearchVM()
+    private var searchText: String? {
+        didSet {
+            if let text = searchText {
+                searchInApi(text)
+            }
+        }
+    }
+    
+    fileprivate func searchInApi(_ text: String) {
+        searchVM.getRelatedItems(itemName: text) { itemRes, error in
+            if let e = error {
+                print(e)
+            } else if let items = itemRes {
+                self.itemsList = items
+                self.itemsContainerView.reloadData()
+            }
+        }
+    }
     
     fileprivate func setupCollectionView() {
         let nib = UINib(nibName: Constants.CellIdentifier.itemCell, bundle: nil)
@@ -35,9 +54,11 @@ class SearchVC: UIViewController, UISearchControllerDelegate {
         self.navigationController?.navigationBar.backItem?.title = ""
 
     }
+    
     fileprivate func setupSearchController() {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.delegate = self
+        searchController.searchBar.delegate = self
         searchController.searchBar.barTintColor = .white
         searchController.searchBar.inputView?.backgroundColor = .white
         searchController.searchBar.placeholder = "Ej: Bolso, Zapatos"
@@ -76,7 +97,23 @@ extension SearchVC: UICollectionViewDelegateFlowLayout {
    }
 }
 
+extension SearchVC: UISearchControllerDelegate, UISearchBarDelegate {
+    internal func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let itemName = searchBar.text else {return}
+        self.searchText = itemName
+    }
+}
 
 extension SearchVC: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        categoriesViewModel.getItemInCategoryAvailable(category: categories[indexPath.item].id) { itemsRes, error in
+//            if let e = error {
+//                print(e)
+//            } else if let items = itemsRes {
+//                self.result = items
+//            }
+            
+            self.itemsContainerView.deselectItem(at: indexPath, animated: false)
+            self.performSegue(withIdentifier: "goToDetail", sender: nil)
+    }
 }
