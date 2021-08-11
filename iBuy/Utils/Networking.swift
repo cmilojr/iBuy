@@ -24,6 +24,19 @@ public class Networking {
                 }
             }
     }
+    
+    func getItems(_ url: URL, completion: @escaping (itemsResponse?, Error?)-> Void) {
+        AF
+            .request(url)
+            .validate()
+            .responseDecodable(of: itemsResponse.self) { response in
+                if let err = response.error {
+                    completion(nil, err)
+                } else if let result = response.value {
+                    completion(result, nil)
+                }
+            }
+    }
 }
 
 

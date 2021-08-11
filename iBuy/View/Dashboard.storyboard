@@ -56,7 +56,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="ZMf-dI-ZGQ" kind="show" id="kdR-en-Yx8"/>
+                                    <action selector="searchButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="V1M-dj-dL6"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categorías" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Na4-GW-07d">
@@ -85,6 +85,7 @@
                     <connections>
                         <outlet property="categoriesCollectionView" destination="lDE-sn-LYL" id="tun-20-oLs"/>
                         <outlet property="searchButton" destination="pBt-ux-a3a" id="zY9-N3-d3l"/>
+                        <segue destination="ZMf-dI-ZGQ" kind="show" identifier="goToSearch" id="D0K-16-8El"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

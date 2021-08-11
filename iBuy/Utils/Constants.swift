@@ -14,7 +14,15 @@ struct Constants {
             let country = Storage.shared.getLocalCountry()
             return "https://api.mercadolibre.com/sites/\(country!.id)/categories"
         }
-        // TODO - Insertar "https://api.mercadolibre.com/sites/\(codigo de mi pais)/categories"
+        static func ItemInCategoryAvailable(_ category: String) -> String {
+            let country = Storage.shared.getLocalCountry()
+            return "https://api.mercadolibre.com/sites/\(country!.id)/search?category=\(category)"
+        }
+        static func searchItems(item: String) -> String {
+            let search = item.replacingOccurrences(of: " ", with: "%20")
+            let country = Storage.shared.getLocalCountry()
+            return "https://api.mercadolibre.com/sites/\(country!.id)/search?q=\(search)"
+        }
     }
     
     struct CellIdentifier {

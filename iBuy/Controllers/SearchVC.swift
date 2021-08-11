@@ -9,6 +9,7 @@ import UIKit
 
 class SearchVC: UIViewController, UISearchControllerDelegate {
     @IBOutlet weak var itemsContainerView: UICollectionView!
+    var itemsList: itemsResponse?
     
     fileprivate func setupCollectionView() {
         let nib = UINib(nibName: Constants.CellIdentifier.itemCell, bundle: nil)
@@ -56,12 +57,12 @@ class SearchVC: UIViewController, UISearchControllerDelegate {
 
 extension SearchVC: UICollectionViewDataSource {
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return itemsList?.results.count ?? 0
     }
     
     internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifier.itemCell, for: indexPath) as! ItemCell
-        print("entree **")
+        cell.setup(productTitle: itemsList?.results[indexPath.row].title ?? "", productPrice: itemsList?.results[indexPath.row].price ?? 0, productImageUrl: itemsList?.results[indexPath.row].thumbnail ?? "")
         return cell
     }
 }

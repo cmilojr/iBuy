@@ -14,10 +14,11 @@ class ItemCell: UICollectionViewCell {
     @IBOutlet weak var viewHeight: NSLayoutConstraint!
     @IBOutlet weak var container: UIView!
     
-    func setup(productTitle: String, productPrice: Int, productImageUrl: String) {
-        self.viewHeight.constant = container.layer.bounds.height / 3
+    func setup(productTitle: String, productPrice: Double, productImageUrl: String) {
+        self.viewHeight.constant = self.layer.bounds.height / 3
         self.productTitle.text = productTitle
         self.productPrice.text = "$ \(String(productPrice))"
+        print(productImageUrl)
         self.productImage.download(from: productImageUrl)
     }
 }

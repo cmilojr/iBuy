@@ -10,8 +10,9 @@ import UIKit
 class DashboardVC: UIViewController {
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     @IBOutlet weak var searchButton: UIButton!
-    fileprivate var categoriesViewModel = Categories()
+    fileprivate var categoriesViewModel = CategoriesVM()
     fileprivate var categories = [CategoryModel]()
+    fileprivate var result: itemsResponse?
     
     fileprivate func setupCollectionView() {
         let nib = UINib(nibName: Constants.CellIdentifier.categoryCell, bundle: nil)
@@ -32,6 +33,10 @@ class DashboardVC: UIViewController {
 
     }
     
+    @IBAction func searchButtonAction(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "goToSearch", sender: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,6 +54,12 @@ class DashboardVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? SearchVC {
+            vc.itemsList = result
+        }
     }
 }
 
@@ -74,4 +85,16 @@ extension DashboardVC: UICollectionViewDelegateFlowLayout {
 }
 
 extension DashboardVC: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        categoriesViewModel.getItemInCategoryAvailable(category: categories[indexPath.item].id) { itemsRes, error in
+            if let e = error {
+                print(e)
+            } else if let items = itemsRes {
+                self.result = items
+            }
+            
+            self.categoriesCollectionView.deselectItem(at: indexPath, animated: false)
+            self.performSegue(withIdentifier: "goToSearch", sender: nil)
+        }
+    }
 }

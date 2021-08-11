@@ -16,4 +16,10 @@ class CategoryCell: UICollectionViewCell {
         self.titleHeight.constant = container.layer.bounds.height - 20
         self.title.text = titleCategory
     }
+ 
+    override var isSelected: Bool {
+        didSet {
+            self.container.backgroundColor = isSelected ? Constants.CustomColors.softOrange : .white
+        }
+    }
 }

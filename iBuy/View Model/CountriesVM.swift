@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Countries {
+struct CountriesVM {
     func getCountries(completion: @escaping ([CountryModel]?, Error?) -> Void) {
         Networking.shared.getList(URL(string: Constants.API.countriesUrl)!) { (res: [CountryModel]?, error: Error?) in
             if let err = error {

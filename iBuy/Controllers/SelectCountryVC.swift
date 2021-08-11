@@ -12,7 +12,7 @@ class SelectCountryVC: UIViewController {
     @IBOutlet weak var countryTable: UITableView!
     @IBOutlet weak var continueButton: UIButton!
     fileprivate lazy var countries = [CountryModel]()
-    fileprivate let countryViewModel = Countries()
+    fileprivate let countryViewModel = CountriesVM()
     lazy var selectedCountry: CountryModel? = nil {
         didSet {
             guard let newValue = selectedCountry else { return }
