@@ -11,6 +11,8 @@ class DashboardVC: UIViewController {
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var emptyState: UIView!
+    @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
+    @IBOutlet weak var blockBackground: UIView!
     fileprivate var categoriesViewModel = CategoriesVM()
     fileprivate var categories = [CategoryModel]()
     fileprivate var result: ProductsResponse?
@@ -31,7 +33,17 @@ class DashboardVC: UIViewController {
         let spacing: CGFloat = 10; // the amount of spacing to appear between image and title
         searchButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: spacing);
         searchButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: 0);
-
+    }
+    
+    fileprivate func loading(show: Bool) {
+        self.loadingSpinner.isHidden = !show
+        self.view.isUserInteractionEnabled = !show
+        self.blockBackground.isHidden = !show
+        if show {
+            self.loadingSpinner.startAnimating()
+        } else {
+            self.loadingSpinner.stopAnimating()
+        }
     }
     
     @IBAction func searchButtonAction(_ sender: UIButton) {
@@ -95,13 +107,14 @@ extension DashboardVC: UICollectionViewDelegateFlowLayout {
 
 extension DashboardVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.loading(show: true)
         categoriesViewModel.getItemInCategoryAvailable(category: categories[indexPath.item].id) { itemsRes, error in
             if let e = error {
                 print(e)
             } else if let items = itemsRes {
                 self.result = items
             }
-            
+            self.loading(show: false)
             self.categoriesCollectionView.deselectItem(at: indexPath, animated: false)
             self.performSegue(withIdentifier: "goToSearch", sender: nil)
         }
