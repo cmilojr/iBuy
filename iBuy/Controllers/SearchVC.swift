@@ -10,9 +10,12 @@ import UIKit
 class SearchVC: UIViewController {
     @IBOutlet weak var itemsContainerView: UICollectionView!
     @IBOutlet weak var emptyState: UIView!
+    @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
+    @IBOutlet weak var blockBackground: UIView!
     var itemsList: ProductsResponse?
     fileprivate var selectedProduct: ProductResponse? = nil
-    
+    let searchController = UISearchController(searchResultsController: nil)
+
     private let searchVM = SearchVM()
     private var searchText: String? {
         didSet {
@@ -22,7 +25,19 @@ class SearchVC: UIViewController {
         }
     }
     
+    fileprivate func loading(show: Bool) {
+        self.loadingSpinner.isHidden = !show
+        self.view.isUserInteractionEnabled = !show
+        self.blockBackground.isHidden = !show
+        if show {
+            self.loadingSpinner.startAnimating()
+        } else {
+            self.loadingSpinner.stopAnimating()
+        }
+    }
+    
     fileprivate func searchInApi(_ text: String) {
+        self.loading(show: true)
         searchVM.getRelatedItems(itemName: text) { itemRes, error in
             if let e = error {
                 print(e)
@@ -30,6 +45,7 @@ class SearchVC: UIViewController {
                 self.itemsList = items
                 self.itemsContainerView.reloadData()
             }
+            self.loading(show: false)
         }
     }
     
@@ -59,7 +75,6 @@ class SearchVC: UIViewController {
     }
     
     fileprivate func setupSearchController() {
-        let searchController = UISearchController(searchResultsController: nil)
         searchController.delegate = self
         searchController.searchBar.delegate = self
         searchController.searchBar.barTintColor = .white
@@ -77,11 +92,6 @@ class SearchVC: UIViewController {
         setupCollectionView()
         setupSearchController()
     }
-    
-//    override func viewDidDisappear(_ animated: Bool) {
-//        self.itemsList = nil
-//        self.itemsContainerView.reloadData()
-//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? DetailItemVC {
@@ -122,6 +132,7 @@ extension SearchVC: UISearchControllerDelegate, UISearchBarDelegate {
     internal func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let itemName = searchBar.text else {return}
         self.searchText = itemName
+        self.searchController.dismiss(animated: true, completion: nil)
     }
 }
 
