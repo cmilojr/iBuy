@@ -18,8 +18,8 @@ struct CategoriesVM {
         }
     }
     
-    func getItemInCategoryAvailable(category: String, completion: @escaping (itemsResponse?, Error?) -> Void) {
-        Networking.shared.getItems(URL(string: Constants.API.ItemInCategoryAvailable(category))!) { (res: itemsResponse?, error: Error?) in
+    func getItemInCategoryAvailable(category: String, completion: @escaping (ProductsResponse?, Error?) -> Void) {
+        Networking.shared.getItems(URL(string: Constants.API.ItemInCategoryAvailable(category))!) { (res: ProductsResponse?, error: Error?) in
             if let err = error {
                 completion(nil, err)
             } else if let countries = res {

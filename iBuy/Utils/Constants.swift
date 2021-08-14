@@ -16,6 +16,8 @@ struct Constants {
         }
         static func ItemInCategoryAvailable(_ category: String) -> String {
             let country = Storage.shared.getLocalCountry()
+            print("https://api.mercadolibre.com/sites/\(country!.id)/search?category=\(category)"
+)
             return "https://api.mercadolibre.com/sites/\(country!.id)/search?category=\(category)"
         }
         static func searchItems(item: String) -> String {

@@ -6,10 +6,12 @@
 //
 
 import UIKit
-
+// Limpiar el container view
 class SearchVC: UIViewController {
     @IBOutlet weak var itemsContainerView: UICollectionView!
-    var itemsList: itemsResponse?
+    var itemsList: ProductsResponse?
+    fileprivate var selectedProduct: ProductResponse? = nil
+    
     private let searchVM = SearchVM()
     private var searchText: String? {
         didSet {
@@ -74,6 +76,12 @@ class SearchVC: UIViewController {
         setupCollectionView()
         setupSearchController()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? DetailItemVC {
+            vc.product = selectedProduct
+        }
+    }
 }
 
 extension SearchVC: UICollectionViewDataSource {
@@ -106,14 +114,8 @@ extension SearchVC: UISearchControllerDelegate, UISearchBarDelegate {
 
 extension SearchVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        categoriesViewModel.getItemInCategoryAvailable(category: categories[indexPath.item].id) { itemsRes, error in
-//            if let e = error {
-//                print(e)
-//            } else if let items = itemsRes {
-//                self.result = items
-//            }
-            
-            self.itemsContainerView.deselectItem(at: indexPath, animated: false)
-            self.performSegue(withIdentifier: "goToDetail", sender: nil)
+        self.selectedProduct = itemsList?.results[indexPath.item]
+        self.itemsContainerView.deselectItem(at: indexPath, animated: false)
+        self.performSegue(withIdentifier: "goToDetail", sender: nil)
     }
 }

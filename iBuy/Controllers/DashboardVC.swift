@@ -12,7 +12,7 @@ class DashboardVC: UIViewController {
     @IBOutlet weak var searchButton: UIButton!
     fileprivate var categoriesViewModel = CategoriesVM()
     fileprivate var categories = [CategoryModel]()
-    fileprivate var result: itemsResponse?
+    fileprivate var result: ProductsResponse?
     
     fileprivate func setupCollectionView() {
         let nib = UINib(nibName: Constants.CellIdentifier.categoryCell, bundle: nil)
