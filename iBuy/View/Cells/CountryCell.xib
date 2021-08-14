@@ -61,7 +61,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
-                <color key="backgroundColor" name="SoftGray"/>
+                <color key="backgroundColor" systemColor="systemGray6Color"/>
                 <constraints>
                     <constraint firstItem="i2L-3Q-sA9" firstAttribute="top" secondItem="emC-8l-0uW" secondAttribute="top" constant="10" id="8hK-cd-mKD"/>
                     <constraint firstAttribute="trailing" secondItem="i2L-3Q-sA9" secondAttribute="trailing" constant="20" id="Eee-bs-32D"/>
@@ -82,13 +82,13 @@
         <image name="MCO" width="170.5" height="170.5"/>
         <image name="checkmark" catalog="system" width="128" height="114"/>
         <namedColor name="Green">
-            <color red="0.4309999942779541" green="0.83099997043609619" blue="0.54500001668930054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="SoftGray">
-            <color red="0.9570000171661377" green="0.9649999737739563" blue="0.99199998378753662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.43137254901960786" green="0.83137254901960778" blue="0.54509803921568623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

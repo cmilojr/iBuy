@@ -38,7 +38,7 @@ class DetailItemVC: UIViewController {
         self.newPriceProduct.text = "$ \(String(describing: product.price!.formattedWithSeparator))"
         self.productImage.download(from: product.thumbnail!)
         // TODO - Que hacer si no llega imagen
-        self.feeProduct.text = "Págalo a 36 Cuotas de $ \(Int(product.price!/36).formattedWithSeparator)"
+        self.feeProduct.text = "Págalo a 36 Cuotas de $ \(Int(product.price!/36).formattedWithSeparator)."
         self.mercadoPagoAccepted.text = product.accepts_mercadopago! ? "Este producto acepta mercado pago!." : "Este producto no acepta mercado pago."
         self.shipping.text = product.shipping.free_shipping! ? "Envio gratuito!." : "Envio por calcular."
         self.productCondition.text = product.condition! == "new" ? "Nuevo." : "Usado."
