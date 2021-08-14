@@ -1,5 +1,5 @@
 //
-//  ItemCell.swift
+//  ProductCell.swift
 //  iBuy
 //
 //  Created by Camilo Jimenez on 9/08/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ItemCell: UICollectionViewCell {
+class ProductCell: UICollectionViewCell {
     @IBOutlet weak var productTitle: UILabel!
     @IBOutlet weak var productPrice: UILabel!
     @IBOutlet weak var productImage: UIImageView!

@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lDE-sn-LYL">
-                                <rect key="frame" x="20" y="268.5" width="374" height="593.5"/>
+                                <rect key="frame" x="20" y="269" width="374" height="593"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jX2-am-YfR">
                                     <size key="itemSize" width="128" height="128"/>
@@ -60,11 +60,47 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categorías" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Na4-GW-07d">
-                                <rect key="frame" x="20" y="208" width="155.5" height="40.5"/>
+                                <rect key="frame" x="20" y="208" width="155.5" height="41"/>
                                 <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view hidden="YES" contentMode="scaleToFill" id="zuU-B5-gKt">
+                                <rect key="frame" x="0.0" y="269" width="414" height="628"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9OS-gA-Lmo">
+                                        <rect key="frame" x="50" y="100" width="314" height="254.5"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EmptyCategory" translatesAutoresizingMaskIntoConstraints="NO" id="Uvz-wv-xO7">
+                                                <rect key="frame" x="9" y="0.0" width="296" height="164"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="164" id="EBR-r0-mFe"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ouhh... al parecer hay un error con la red" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDk-b8-BHR">
+                                                <rect key="frame" x="7.5" y="164" width="299.5" height="67"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="28"/>
+                                                <color key="textColor" systemColor="systemGray2Color"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Por favor intenta más tarde" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2W3-0e-AEO">
+                                                <rect key="frame" x="35.5" y="231" width="243" height="23.5"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                                <color key="textColor" systemColor="systemGray4Color"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="9OS-gA-Lmo" firstAttribute="top" secondItem="zuU-B5-gKt" secondAttribute="top" constant="100" id="37f-jO-A4d"/>
+                                    <constraint firstItem="9OS-gA-Lmo" firstAttribute="leading" secondItem="zuU-B5-gKt" secondAttribute="leading" constant="50" id="GRg-NI-L8A"/>
+                                    <constraint firstAttribute="trailing" secondItem="9OS-gA-Lmo" secondAttribute="trailing" constant="50" id="NYf-Tk-BxY"/>
+                                    <constraint firstItem="9OS-gA-Lmo" firstAttribute="centerX" secondItem="zuU-B5-gKt" secondAttribute="centerX" id="bVo-Ks-z5F"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
@@ -77,6 +113,7 @@
                             <constraint firstItem="pBt-ux-a3a" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Vvw-wQ-hMU"/>
                             <constraint firstItem="Na4-GW-07d" firstAttribute="leading" secondItem="pBt-ux-a3a" secondAttribute="leading" id="bq7-Yl-4E5"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="lDE-sn-LYL" secondAttribute="bottom" id="fmV-Vh-y6L"/>
+                            <constraint firstItem="zuU-B5-gKt" firstAttribute="top" secondItem="Na4-GW-07d" secondAttribute="bottom" constant="20" id="lIT-XD-RaF"/>
                             <constraint firstItem="lDE-sn-LYL" firstAttribute="top" secondItem="Na4-GW-07d" secondAttribute="bottom" constant="20" id="nLR-2p-0Rc"/>
                             <constraint firstItem="Na4-GW-07d" firstAttribute="top" secondItem="pBt-ux-a3a" secondAttribute="bottom" constant="40" id="wJh-kt-XSM"/>
                         </constraints>
@@ -84,6 +121,7 @@
                     <navigationItem key="navigationItem" id="4CI-fF-JIP"/>
                     <connections>
                         <outlet property="categoriesCollectionView" destination="lDE-sn-LYL" id="tun-20-oLs"/>
+                        <outlet property="emptyState" destination="zuU-B5-gKt" id="wOM-df-cGY"/>
                         <outlet property="searchButton" destination="pBt-ux-a3a" id="zY9-N3-d3l"/>
                         <segue destination="ZMf-dI-ZGQ" kind="show" identifier="goToSearch" id="D0K-16-8El"/>
                     </connections>
@@ -123,6 +161,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="EmptyCategory" width="296" height="264"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <namedColor name="Green">
             <color red="0.43137254901960786" green="0.83137254901960778" blue="0.54509803921568623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -132,6 +171,12 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

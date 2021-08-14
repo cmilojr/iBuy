@@ -9,6 +9,7 @@ import UIKit
 // Limpiar el container view
 class SearchVC: UIViewController {
     @IBOutlet weak var itemsContainerView: UICollectionView!
+    @IBOutlet weak var emptyState: UIView!
     var itemsList: ProductsResponse?
     fileprivate var selectedProduct: ProductResponse? = nil
     
@@ -33,8 +34,8 @@ class SearchVC: UIViewController {
     }
     
     fileprivate func setupCollectionView() {
-        let nib = UINib(nibName: Constants.CellIdentifier.itemCell, bundle: nil)
-        itemsContainerView.register(nib, forCellWithReuseIdentifier: Constants.CellIdentifier.itemCell)
+        let nib = UINib(nibName: Constants.CellIdentifier.productCell, bundle: nil)
+        itemsContainerView.register(nib, forCellWithReuseIdentifier: Constants.CellIdentifier.productCell)
         itemsContainerView.dataSource = self
         itemsContainerView.delegate = self
         itemsContainerView.backgroundColor = .none
@@ -77,6 +78,11 @@ class SearchVC: UIViewController {
         setupSearchController()
     }
     
+//    override func viewDidDisappear(_ animated: Bool) {
+//        self.itemsList = nil
+//        self.itemsContainerView.reloadData()
+//    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? DetailItemVC {
             vc.product = selectedProduct
@@ -86,11 +92,18 @@ class SearchVC: UIViewController {
 
 extension SearchVC: UICollectionViewDataSource {
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if itemsList?.results.count == nil || itemsList?.results.count == 0 {
+            self.itemsContainerView.isHidden = true
+            self.emptyState.isHidden = false
+        } else {
+            self.itemsContainerView.isHidden = false
+            self.emptyState.isHidden = true
+        }
         return itemsList?.results.count ?? 0
     }
     
     internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifier.itemCell, for: indexPath) as! ItemCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifier.productCell, for: indexPath) as! ProductCell
         cell.setup(productTitle: itemsList?.results[indexPath.row].title ?? "", productPrice: itemsList?.results[indexPath.row].price ?? 0, productImageUrl: itemsList?.results[indexPath.row].thumbnail ?? "")
         return cell
     }

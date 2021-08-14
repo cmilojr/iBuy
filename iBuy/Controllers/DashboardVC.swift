@@ -10,6 +10,7 @@ import UIKit
 class DashboardVC: UIViewController {
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var emptyState: UIView!
     fileprivate var categoriesViewModel = CategoriesVM()
     fileprivate var categories = [CategoryModel]()
     fileprivate var result: ProductsResponse?
@@ -34,6 +35,7 @@ class DashboardVC: UIViewController {
     }
     
     @IBAction func searchButtonAction(_ sender: UIButton) {
+        self.result = nil
         self.performSegue(withIdentifier: "goToSearch", sender: nil)
     }
     
@@ -65,6 +67,13 @@ class DashboardVC: UIViewController {
 
 extension DashboardVC: UICollectionViewDataSource {
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if categories.count == 0 {
+            emptyState.isHidden = false
+            categoriesCollectionView.isHidden = true
+        } else {
+            emptyState.isHidden = true
+            categoriesCollectionView.isHidden = false
+        }
         return categories.count
     }
     

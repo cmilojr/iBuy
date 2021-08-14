@@ -30,7 +30,7 @@ struct Constants {
     struct CellIdentifier {
         static let categoryCell = "CategoryCell"
         static let countryCell = "CountryCell"
-        static let itemCell = "ItemCell"
+        static let productCell = "ProductCell"
     }
     
     struct SBIdentifier {
