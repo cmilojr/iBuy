@@ -43,6 +43,15 @@ class SelectCountryVC: UIViewController {
             }
         }
     }
+    
+    @IBAction func continueButtonAction(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "goToDashboard", sender: nil)
+    }
+    private func enableContinueButton() {
+        self.continueButton.backgroundColor = Constants.CustomColors.green
+        self.continueButton.setTitleColor(Constants.CustomColors.mintGreen, for: .normal)
+        self.continueButton.setTitleColor(UIColor.lightGray, for: .disabled)
+    }
 }
 
 extension SelectCountryVC: UITableViewDataSource {
@@ -61,5 +70,7 @@ extension SelectCountryVC: UITableViewDataSource {
 extension SelectCountryVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedCountry = countries[indexPath[1]]
+        self.continueButton.isEnabled = true
+        self.continueButton.backgroundColor = Constants.CustomColors.green
     }
 }
