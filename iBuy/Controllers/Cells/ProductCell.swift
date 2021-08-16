@@ -14,12 +14,14 @@ class ProductCell: UICollectionViewCell {
     @IBOutlet weak var viewHeight: NSLayoutConstraint!
     @IBOutlet weak var container: UIView!
     @IBOutlet weak var selectedLayer: UIView!
+    @IBOutlet weak var discountIcon: UIImageView!
     
-    func setup(productTitle: String, productPrice: Int, productImageUrl: String) {
+    func setup(productTitle: String, productPrice: Int, productImageUrl: String, oldPrice: Int) {
         self.viewHeight.constant = self.layer.bounds.height / 3
         self.productTitle.text = productTitle
         self.productPrice.text = "$ \(productPrice.formattedWithSeparator)"
         self.productImage.download(from: productImageUrl)
+        self.discountIcon.isHidden = !(productPrice < oldPrice)
     }
     
     override var isSelected: Bool {

@@ -17,6 +17,7 @@ class DetailItemVC: UIViewController {
     @IBOutlet weak var shipping: UILabel!
     @IBOutlet weak var mercadoPagoAccepted: UILabel!
     @IBOutlet weak var productImage: UIImageView!
+    @IBOutlet weak var discountStack: UIStackView!
     var product: ProductResponse?
     
     fileprivate func strikethroughLabel(oldPrice: String) -> NSMutableAttributedString {
@@ -28,12 +29,18 @@ class DetailItemVC: UIViewController {
     fileprivate func setupDetail(_ product: ProductResponse) {
         self.titleOfProduct.text = product.title
         if let oldPrice = product.original_price {
+            let discount = calculateDiscount(oldPrice: oldPrice, newPrice: product.price!)
+            if discount <= 0 {
+                self.oldPriceProduct.isHidden = true
+                self.discountStack.isHidden = true
+
+            }
             self.oldPriceProduct.attributedText = strikethroughLabel(oldPrice: "$ \(oldPrice.formattedWithSeparator)")
 
-            self.discountProduct.text = "\(calculateDiscount(oldPrice: oldPrice, newPrice: product.price!))% OFF"
+            self.discountProduct.text = "\(discount)% OFF"
         } else {
             self.oldPriceProduct.isHidden = true
-            self.discountProduct.isHidden = true
+            self.discountStack.isHidden = true
         }
         self.newPriceProduct.text = "$ \(String(describing: product.price!.formattedWithSeparator))"
         self.productImage.download(from: product.thumbnail!)

@@ -6,7 +6,8 @@
 //
 
 import UIKit
-// Limpiar el container view
+import NotificationBannerSwift
+
 class SearchVC: UIViewController {
     @IBOutlet weak var itemsContainerView: UICollectionView!
     @IBOutlet weak var emptyState: UIView!
@@ -40,7 +41,11 @@ class SearchVC: UIViewController {
         self.loading(show: true)
         searchVM.getRelatedItems(itemName: text) { itemRes, error in
             if let e = error {
-                print(e)
+                let banner = NotificationBanner(title: "Error", subtitle: e.localizedDescription, style: .danger)
+                DispatchQueue.main.async {
+                    banner.show()
+                }
+
             } else if let items = itemRes {
                 self.itemsList = items
                 self.itemsContainerView.reloadData()
@@ -114,7 +119,7 @@ extension SearchVC: UICollectionViewDataSource {
     
     internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifier.productCell, for: indexPath) as! ProductCell
-        cell.setup(productTitle: itemsList?.results[indexPath.row].title ?? "", productPrice: itemsList?.results[indexPath.row].price ?? 0, productImageUrl: itemsList?.results[indexPath.row].thumbnail ?? "")
+        cell.setup(productTitle: itemsList?.results[indexPath.row].title ?? "", productPrice: itemsList?.results[indexPath.row].price ?? 0, productImageUrl: itemsList?.results[indexPath.row].thumbnail ?? "", oldPrice: itemsList?.results[indexPath.row].original_price ?? 0)
         return cell
     }
 }

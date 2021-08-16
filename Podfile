@@ -7,7 +7,8 @@ target 'iBuy' do
 
   # Pods for iBuy
   pod 'Alamofire', '~> 5.2'
-  
+  pod 'NotificationBannerSwift', '~> 3.0.0'
+
   target 'iBuyTests' do
     inherit! :search_paths
     # Pods for testing

@@ -20,11 +20,11 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lDx-JA-V0h">
                         <rect key="frame" x="0.0" y="0.0" width="216" height="256"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="clock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="qAE-gz-qfQ">
-                                <rect key="frame" x="10" y="10.5" width="196" height="128"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="qAE-gz-qfQ">
+                                <rect key="frame" x="10" y="0.5" width="196" height="148"/>
                                 <color key="tintColor" systemColor="systemGray5Color"/>
                             </imageView>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j0p-5D-BFS">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j0p-5D-BFS">
                                 <rect key="frame" x="0.0" y="149" width="216" height="107"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apple iPhone 11 (128 GB) - Blanco" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oMb-1y-yc2">
@@ -36,22 +36,32 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="$2.849.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Lmv-VJ-dze">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$2.849.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Lmv-VJ-dze">
                                         <rect key="frame" x="10" y="70" width="196" height="27"/>
                                         <fontDescription key="fontDescription" name="NotoSansKannada-Light" family="Noto Sans Kannada" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discount" translatesAutoresizingMaskIntoConstraints="NO" id="cB2-iI-jOz">
+                                        <rect key="frame" x="171" y="71" width="25" height="25"/>
+                                        <color key="tintColor" red="0.1386819353" green="0.51989073659999996" blue="0.43313510370000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="IEe-LG-f07"/>
+                                            <constraint firstAttribute="height" constant="25" id="mJm-q6-OoF"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.83137254901960778" green="0.47450980392156861" blue="0.83137254901960778" alpha="0.41703447614397321" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.83137254900000002" green="0.73725490199999999" blue="0.38823529410000002" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Lmv-VJ-dze" secondAttribute="trailing" constant="10" id="7GA-GA-jLF"/>
-                                    <constraint firstAttribute="bottom" secondItem="Lmv-VJ-dze" secondAttribute="bottom" id="D39-EN-QKy"/>
+                                    <constraint firstAttribute="trailing" secondItem="cB2-iI-jOz" secondAttribute="trailing" constant="20" id="DlU-A5-iTP"/>
                                     <constraint firstAttribute="trailing" secondItem="oMb-1y-yc2" secondAttribute="trailing" constant="10" id="Mta-aQ-jOS"/>
+                                    <constraint firstAttribute="bottom" secondItem="Lmv-VJ-dze" secondAttribute="bottom" constant="10" id="Xhh-hH-b2f"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="107" id="YVQ-a3-uad"/>
                                     <constraint firstItem="oMb-1y-yc2" firstAttribute="top" secondItem="j0p-5D-BFS" secondAttribute="top" constant="10" id="dQg-0T-Mj6"/>
                                     <constraint firstItem="oMb-1y-yc2" firstAttribute="leading" secondItem="j0p-5D-BFS" secondAttribute="leading" constant="10" id="huT-K5-7ic"/>
                                     <constraint firstItem="Lmv-VJ-dze" firstAttribute="leading" secondItem="j0p-5D-BFS" secondAttribute="leading" constant="10" id="m8V-fK-yRt"/>
+                                    <constraint firstItem="cB2-iI-jOz" firstAttribute="centerY" secondItem="Lmv-VJ-dze" secondAttribute="centerY" id="qkV-Zh-grK"/>
                                     <constraint firstItem="Lmv-VJ-dze" firstAttribute="top" secondItem="oMb-1y-yc2" secondAttribute="bottom" constant="10" id="yxg-SX-Wg9"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -96,6 +106,7 @@
             <size key="customSize" width="216" height="256"/>
             <connections>
                 <outlet property="container" destination="lDx-JA-V0h" id="5sW-2x-RA5"/>
+                <outlet property="discountIcon" destination="cB2-iI-jOz" id="M4z-M4-UwH"/>
                 <outlet property="productImage" destination="qAE-gz-qfQ" id="vLC-Cf-uha"/>
                 <outlet property="productPrice" destination="Lmv-VJ-dze" id="WZg-Wl-kow"/>
                 <outlet property="productTitle" destination="oMb-1y-yc2" id="INm-0a-40P"/>
@@ -107,6 +118,7 @@
     </objects>
     <resources>
         <image name="clock" catalog="system" width="128" height="121"/>
+        <image name="discount" width="170.5" height="170.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

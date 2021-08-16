@@ -18,7 +18,7 @@ struct Storage {
             defaults.set(data, forKey: Constants.LocalStorageKey.userCountry)
             defaults.synchronize()
         } catch {
-            print(error)
+            print("setLocalCountry: \(error)")
         }
     }
     
@@ -27,7 +27,7 @@ struct Storage {
         do {
             return try JSONDecoder().decode(CountryModel.self, from: data)
         } catch {
-            print(error)
+            print("getLocalCountry: \(error)")
             return nil
         }
     }

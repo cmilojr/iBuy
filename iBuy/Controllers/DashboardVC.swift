@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NotificationBannerSwift
 
 class DashboardVC: UIViewController {
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
@@ -53,10 +54,12 @@ class DashboardVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         categoriesViewModel.getCategories { categoriesRes, error in
-            if let e = error {
-                print(e)
+            if let e = error {                
+                let banner = NotificationBanner(title: "Error", subtitle: e.localizedDescription, style: .danger)
+                DispatchQueue.main.async {
+                    banner.show()
+                }
             } else if let categories = categoriesRes {
                 self.categories = categories
                 self.categoriesCollectionView.reloadData()
@@ -110,7 +113,11 @@ extension DashboardVC: UICollectionViewDelegate {
         self.loading(show: true)
         categoriesViewModel.getItemInCategoryAvailable(category: categories[indexPath.item].id) { itemsRes, error in
             if let e = error {
-                print(e)
+                let banner = NotificationBanner(title: "Error", subtitle: e.localizedDescription, style: .danger)
+                DispatchQueue.main.async {
+                    banner.show()
+                }
+
             } else if let items = itemsRes {
                 self.result = items
             }

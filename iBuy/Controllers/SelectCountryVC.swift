@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import NotificationBannerSwift
 class SelectCountryVC: UIViewController {
     
     @IBOutlet weak var countryTable: UITableView!
@@ -36,7 +36,11 @@ class SelectCountryVC: UIViewController {
         countryTableConf()
         countryViewModel.getCountries { countryRes, error in
             if let e = error {
-                print(e)
+                let banner = NotificationBanner(title: "Error", subtitle: e.localizedDescription, style: .danger)
+                DispatchQueue.main.async {
+                    banner.show()
+                }
+
             } else if let countries = countryRes {
                 self.countries = countries
                 self.countryTable.reloadData()
