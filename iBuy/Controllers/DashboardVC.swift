@@ -6,10 +6,17 @@
 //
 
 import UIKit
+import NotificationBannerSwift
 
 class DashboardVC: UIViewController {
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var emptyState: UIView!
+    @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
+    @IBOutlet weak var blockBackground: UIView!
+    fileprivate var categoriesViewModel = CategoriesVM()
+    fileprivate var categories = [CategoryModel]()
+    fileprivate var result: ProductsResponse?
     
     fileprivate func setupCollectionView() {
         let nib = UINib(nibName: Constants.CellIdentifier.categoryCell, bundle: nil)
@@ -27,26 +34,67 @@ class DashboardVC: UIViewController {
         let spacing: CGFloat = 10; // the amount of spacing to appear between image and title
         searchButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: spacing);
         searchButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: 0);
-
+    }
+    
+    fileprivate func loading(show: Bool) {
+        self.loadingSpinner.isHidden = !show
+        self.view.isUserInteractionEnabled = !show
+        self.blockBackground.isHidden = !show
+        if show {
+            self.loadingSpinner.startAnimating()
+        } else {
+            self.loadingSpinner.stopAnimating()
+        }
+    }
+    
+    @IBAction func searchButtonAction(_ sender: UIButton) {
+        self.result = nil
+        self.performSegue(withIdentifier: "goToSearch", sender: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.isNavigationBarHidden = true
-                
+        categoriesViewModel.getCategories { categoriesRes, error in
+            if let e = error {                
+                let banner = NotificationBanner(title: "Error", subtitle: e.localizedDescription, style: .danger)
+                DispatchQueue.main.async {
+                    banner.show()
+                }
+            } else if let categories = categoriesRes {
+                self.categories = categories
+                self.categoriesCollectionView.reloadData()
+            }
+        }
         setupCollectionView()
         setupSearchButton()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? SearchVC {
+            vc.itemsList = result
+        }
     }
 }
 
 extension DashboardVC: UICollectionViewDataSource {
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        if categories.count == 0 {
+            emptyState.isHidden = false
+            categoriesCollectionView.isHidden = true
+        } else {
+            emptyState.isHidden = true
+            categoriesCollectionView.isHidden = false
+        }
+        return categories.count
     }
     
     internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifier.categoryCell, for: indexPath) as! CategoryCell
-        cell.setup()
+        cell.setup(titleCategory: categories[indexPath.row].name)
         return cell
     }
 }
@@ -61,4 +109,21 @@ extension DashboardVC: UICollectionViewDelegateFlowLayout {
 }
 
 extension DashboardVC: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.loading(show: true)
+        categoriesViewModel.getItemInCategoryAvailable(category: categories[indexPath.item].id) { itemsRes, error in
+            if let e = error {
+                let banner = NotificationBanner(title: "Error", subtitle: e.localizedDescription, style: .danger)
+                DispatchQueue.main.async {
+                    banner.show()
+                }
+
+            } else if let items = itemsRes {
+                self.result = items
+            }
+            self.loading(show: false)
+            self.categoriesCollectionView.deselectItem(at: indexPath, animated: false)
+            self.performSegue(withIdentifier: "goToSearch", sender: nil)
+        }
+    }
 }

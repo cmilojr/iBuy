@@ -6,17 +6,28 @@
 //
 
 import UIKit
-
+import NotificationBannerSwift
 class SelectCountryVC: UIViewController {
     
     @IBOutlet weak var countryTable: UITableView!
     @IBOutlet weak var continueButton: UIButton!
-    lazy var countries = [CountryModel]()
-    let countryViewModel = Countries()
+    fileprivate lazy var countries = [CountryModel]()
+    fileprivate let countryViewModel = CountriesVM()
     lazy var selectedCountry: CountryModel? = nil {
         didSet {
-            guard let newValue = selectedCountry else { return }
-            countryViewModel.saveSelectedCountry(newValue)
+            guard let country = selectedCountry else { return }
+            saveCountry(country)
+        }
+    }
+    
+    fileprivate func saveCountry(_ country: CountryModel) {
+        do {
+            try countryViewModel.saveSelectedCountry(country)
+        } catch {
+            let banner = NotificationBanner(title: "Error", subtitle: error.localizedDescription, style: .danger)
+            DispatchQueue.main.async {
+                banner.show()
+            }
         }
     }
     
@@ -36,12 +47,25 @@ class SelectCountryVC: UIViewController {
         countryTableConf()
         countryViewModel.getCountries { countryRes, error in
             if let e = error {
-                print(e)
+                let banner = NotificationBanner(title: "Error", subtitle: e.localizedDescription, style: .danger)
+                DispatchQueue.main.async {
+                    banner.show()
+                }
+
             } else if let countries = countryRes {
                 self.countries = countries
                 self.countryTable.reloadData()
             }
         }
+    }
+    
+    @IBAction func continueButtonAction(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "goToDashboard", sender: nil)
+    }
+    private func enableContinueButton() {
+        self.continueButton.backgroundColor = Constants.CustomColors.green
+        self.continueButton.setTitleColor(Constants.CustomColors.mintGreen, for: .normal)
+        self.continueButton.setTitleColor(UIColor.lightGray, for: .disabled)
     }
 }
 
@@ -61,5 +85,7 @@ extension SelectCountryVC: UITableViewDataSource {
 extension SelectCountryVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedCountry = countries[indexPath[1]]
+        self.continueButton.isEnabled = true
+        self.continueButton.backgroundColor = Constants.CustomColors.green
     }
 }

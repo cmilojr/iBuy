@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Countries {
+struct CountriesVM {
     func getCountries(completion: @escaping ([CountryModel]?, Error?) -> Void) {
         Networking.shared.getList(URL(string: Constants.API.countriesUrl)!) { (res: [CountryModel]?, error: Error?) in
             if let err = error {
@@ -18,7 +18,11 @@ struct Countries {
         }
     }
     
-    func saveSelectedCountry(_ country: CountryModel) {
-        Storage.shared.setLocalCountry(country)
+    func saveSelectedCountry(_ country: CountryModel) throws {
+        do {
+            try Storage.shared.setLocalCountry(country)
+        } catch {
+            throw error
+        }
     }
 }

@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let winScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: winScene)
-        if let _ = Storage.shared.getLocalCountry()  {
+        if let _ = try! Storage.shared.getLocalCountry()  {
             guard let rootVC = UIStoryboard
                     .init(name: Constants.SBIdentifier.dashboard, bundle: nil)
                     .instantiateViewController(identifier: Constants.SBIdentifier.dashboard) as? DashboardVC else {return}
