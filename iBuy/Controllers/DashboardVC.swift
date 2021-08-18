@@ -14,6 +14,7 @@ class DashboardVC: UIViewController {
     @IBOutlet weak var emptyState: UIView!
     @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
     @IBOutlet weak var blockBackground: UIView!
+    @IBOutlet weak var changeCountryButton: UIButton!
     fileprivate var categoriesViewModel = CategoriesVM()
     fileprivate var categories = [CategoryModel]()
     fileprivate var result: ProductsResponse?
@@ -52,6 +53,23 @@ class DashboardVC: UIViewController {
         self.performSegue(withIdentifier: "goToSearch", sender: nil)
     }
     
+    @IBAction func changeCountryAction(_ sender: Any) {
+        self.performSegue(withIdentifier: "goToSelectCountry", sender: nil)
+    }
+    fileprivate func setupChangeCountry() {
+        do {
+            let countrySaved = try Storage.shared.getLocalCountry()
+            guard let country = countrySaved else {return}
+            changeCountryButton.setImage(UIImage(named: country.id), for: .normal)
+        } catch {
+            changeCountryButton.isHidden = true
+            let banner = NotificationBanner(title: "Error", subtitle: error.localizedDescription, style: .danger)
+            DispatchQueue.main.async {
+                banner.show()
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         categoriesViewModel.getCategories { categoriesRes, error in
@@ -71,12 +89,17 @@ class DashboardVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
+        setupChangeCountry()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? SearchVC {
             vc.itemsList = result
         }
+        if let vc = segue.destination as? SelectCountryVC {
+            vc.dismiss = true
+        }
+
     }
 }
 

@@ -13,6 +13,7 @@ class SelectCountryVC: UIViewController {
     @IBOutlet weak var continueButton: UIButton!
     fileprivate lazy var countries = [CountryModel]()
     fileprivate let countryViewModel = CountriesVM()
+    var dismiss: Bool = false
     lazy var selectedCountry: CountryModel? = nil {
         didSet {
             guard let country = selectedCountry else { return }
@@ -60,7 +61,11 @@ class SelectCountryVC: UIViewController {
     }
     
     @IBAction func continueButtonAction(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "goToDashboard", sender: nil)
+        if !dismiss {
+            self.performSegue(withIdentifier: "goToDashboard", sender: nil)
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
     }
     private func enableContinueButton() {
         self.continueButton.backgroundColor = Constants.CustomColors.green
