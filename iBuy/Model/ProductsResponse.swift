@@ -14,10 +14,10 @@ struct ProductsResponse: Decodable {
 struct ProductResponse: Decodable {
     let id: String?
     let title: String?
-    let price: Int?
+    let price: Double?
     let condition: String?
     let shipping: Shipping
-    let original_price: Int?
+    let original_price: Double?
     let thumbnail: String?
     let accepts_mercadopago: Bool?
     let category_id: String?

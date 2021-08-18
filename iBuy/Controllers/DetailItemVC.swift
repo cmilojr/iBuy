@@ -29,7 +29,7 @@ class DetailItemVC: UIViewController {
     fileprivate func setupDetail(_ product: ProductResponse) {
         self.titleOfProduct.text = product.title
         if let oldPrice = product.original_price {
-            let discount = calculateDiscount(oldPrice: oldPrice, newPrice: product.price!)
+            let discount = calculateDiscount(oldPrice: Int(oldPrice), newPrice: Int(product.price!))
             if discount <= 0 {
                 self.oldPriceProduct.isHidden = true
                 self.discountStack.isHidden = true
@@ -42,10 +42,10 @@ class DetailItemVC: UIViewController {
             self.oldPriceProduct.isHidden = true
             self.discountStack.isHidden = true
         }
-        self.newPriceProduct.text = "$ \(String(describing: product.price!.formattedWithSeparator))"
+        self.newPriceProduct.text = "$ \(String(describing: checkDouble(product.price!)))"
         self.productImage.download(from: product.thumbnail!)
         // TODO - Que hacer si no llega imagen
-        self.feeProduct.text = "Págalo a 36 Cuotas de $ \(Int(product.price!/36).formattedWithSeparator)."
+        self.feeProduct.text = "Págalo a 36 Cuotas de $ \((product.price!/36).formattedWithSeparator)."
         self.mercadoPagoAccepted.text = product.accepts_mercadopago! ? "Este producto acepta mercado pago!." : "Este producto no acepta mercado pago."
         self.shipping.text = product.shipping.free_shipping! ? "Envio gratuito!." : "Envio por calcular."
         self.productCondition.text = product.condition! == "new" ? "Nuevo." : "Usado."
@@ -55,6 +55,13 @@ class DetailItemVC: UIViewController {
         return (oldPrice * 100)/newPrice - 100
     }
     
+    func checkDouble(_ price: Double) -> String {
+        if (floor(price) == price) {
+            return String(price.formattedWithSeparator)
+        }
+        return String(price)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Detalle del producto"
