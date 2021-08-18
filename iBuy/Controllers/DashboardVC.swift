@@ -70,10 +70,9 @@ class DashboardVC: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    fileprivate func getCategories() {
         categoriesViewModel.getCategories { categoriesRes, error in
-            if let e = error {                
+            if let e = error {
                 let banner = NotificationBanner(title: "Error", subtitle: e.localizedDescription, style: .danger)
                 DispatchQueue.main.async {
                     banner.show()
@@ -83,6 +82,10 @@ class DashboardVC: UIViewController {
                 self.categoriesCollectionView.reloadData()
             }
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         setupCollectionView()
         setupSearchButton()
     }
@@ -90,6 +93,7 @@ class DashboardVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
         setupChangeCountry()
+        getCategories()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -99,7 +103,6 @@ class DashboardVC: UIViewController {
         if let vc = segue.destination as? SelectCountryVC {
             vc.dismiss = true
         }
-
     }
 }
 
