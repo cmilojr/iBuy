@@ -13,9 +13,4 @@ target 'iBuy' do
     inherit! :search_paths
     # Pods for testing
   end
-
-  target 'iBuyUITests' do
-    # Pods for testing
-  end
-
 end

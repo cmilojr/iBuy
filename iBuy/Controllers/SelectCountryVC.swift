@@ -15,8 +15,19 @@ class SelectCountryVC: UIViewController {
     fileprivate let countryViewModel = CountriesVM()
     lazy var selectedCountry: CountryModel? = nil {
         didSet {
-            guard let newValue = selectedCountry else { return }
-            countryViewModel.saveSelectedCountry(newValue)
+            guard let country = selectedCountry else { return }
+            saveCountry(country)
+        }
+    }
+    
+    fileprivate func saveCountry(_ country: CountryModel) {
+        do {
+            try countryViewModel.saveSelectedCountry(country)
+        } catch {
+            let banner = NotificationBanner(title: "Error", subtitle: error.localizedDescription, style: .danger)
+            DispatchQueue.main.async {
+                banner.show()
+            }
         }
     }
     

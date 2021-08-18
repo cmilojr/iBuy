@@ -18,7 +18,11 @@ struct CountriesVM {
         }
     }
     
-    func saveSelectedCountry(_ country: CountryModel) {
-        Storage.shared.setLocalCountry(country)
+    func saveSelectedCountry(_ country: CountryModel) throws {
+        do {
+            try Storage.shared.setLocalCountry(country)
+        } catch {
+            throw error
+        }
     }
 }
